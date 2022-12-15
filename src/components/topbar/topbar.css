@@ -1,0 +1,100 @@
+.friends-container {
+    position: relative;
+    height: 844px;
+    width: 390px;
+   
+   }
+
+   .friends-image {
+    position: absolute;
+   }
+
+
+.friends-block {
+    position: absolute;
+    background-color: #171B3E;
+    height: 844px;
+    width: 390px;
+    border-radius: 5%;
+}
+
+.friends-block-2 {
+    position: absolute;
+    background-color: #FFFFFF;
+    margin-top: 85px;
+    height: 749px;
+    width: 390px;
+    border-radius: 5% 5% 5% 5%;
+}
+
+.friends-text-header {
+    text-align: left;
+    font-family: montserrat;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #EFF0F2;
+    margin: 30px 40px 0 50px;
+}
+
+.friends-text-header-2 {
+    text-align: left;
+    font-family: montserrat;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #EFF0F2;
+    margin: 0px 40px 0 50px;
+}
+
+
+.friends-search {
+    position: absolute;
+    background-color: #EFF0F2;
+    margin: 130px 20px 0 20px;
+    height: 70px;
+    width: 350px;
+    border-radius: 30px;
+    text-align: left;
+    font-family: montserrat;
+    font-size: 1.3em;
+    padding-left: 30px;
+    
+}
+
+
+
+
+.friends-logo {
+font-family: montserrat;
+font-size: 6.0em;
+font-weight: bold;
+color: #EFF0F2;
+text-align: center;
+margin: 70px 50px 0 60px;
+}
+
+.friendsList {
+
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 10px 0 0 60px;
+
+
+}
+
+.friendsName {
+
+font-family: montserrat;
+font-size: 1.0em;
+font-weight: bold;
+color: #000;
+text-align: center;
+margin: 70px 50px 0 20px;
+}
+
+li {
+
+    list-style: none;
+    margin-bottom: 30px;
+}
