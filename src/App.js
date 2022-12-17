@@ -7,15 +7,20 @@ import React from "react"
 // import ListenBlock from "./components/listenblock/ListenBlock.jsx"
 // import TopbarWelcome from "./components/topbar_welcome/TopbarWelcome";
 // import EntryForm from "./components/entryform/EntryForm";
-import Login from "./pages/login/Login"
-
+// import Login from "./pages/login/Login"
+// import Verified from "./pages/verified/Verified"
+// import UserStart from "./pages/userstart/UserStart.jsx";
+// import WelcomeBack from "./pages/welcomeback/WelcomeBack";
+// import Signup from "./pages/signup/Signup";
+// import Playback from "./pages/playback/Playback";
+import Profile from "./pages/profile/Profile"
 
 
 function App(){
 
     return (
 <>
-<Login />
+<Profile />
        
         </>
     )
@@ -23,6 +28,103 @@ function App(){
 
 
 export default App; 
+
+
+
+
+
+
+
+
+// ********** PLAYBACK ***********
+
+
+// function App(){
+
+//     return (
+// <>
+// <Playback />
+       
+//         </>
+//     )
+// }
+
+
+// export default App; 
+
+
+
+// ********** SIGNUP ***********
+
+// function App(){
+
+//     return (
+// <>
+// <Signup />
+       
+//         </>
+//     )
+// }
+
+
+// export default App; 
+
+
+
+// ********** USERSTART ***********
+
+// function App(){
+
+//     return (
+// <>
+// <UserStart />
+// <ListenBlock />
+       
+//         </>
+//     )
+// }
+
+
+// export default App; 
+
+
+
+
+// ********** VERIFIED ***********
+
+
+// function App(){
+
+//     return (
+// <>
+// <Verified />
+       
+//         </>
+//     )
+// }
+
+
+// export default App; 
+
+
+
+
+
+// ********** LOGIN ***********
+
+
+// function App(){
+
+//     return (
+// <>
+// <Login />
+       
+//         </>
+//     )
+// }
+
+
+// export default App; 
 
 
 
