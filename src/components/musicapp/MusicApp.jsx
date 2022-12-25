@@ -1,6 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import "./MusicApp.css"
 import '@fortawesome/fontawesome-free/css/all.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStepBackward } from '@fortawesome/free-solid-svg-icons';
+import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPauseCircle } from '@fortawesome/free-solid-svg-icons';
+import { faStepForward } from '@fortawesome/free-solid-svg-icons';
+
+// import ProgressBar from '../progress_bar/ProgressBar';
+
 
 const MusicApp = () => {
   // Add an audioRef state variable to store a reference to the audio element
@@ -52,12 +60,30 @@ const MusicApp = () => {
       setCurrentSong(song);
       audioRef.current.src = song.fileUrl;
       audioRef.current.load();
-      audioRef.current.play();
-      setIsPlaying(true);
+  
+      // Add a 'play' event listener to the audio element
+      audioRef.current.addEventListener('play', () => {
+        setIsPlaying(true);
+      });
+  
+      // Add a 'pause' event listener to the audio element
+      audioRef.current.addEventListener('pause', () => {
+        setIsPlaying(false);
+      });
+  
+      if (audioRef.current.paused) {
+        // Play the audio file if it is paused
+        audioRef.current.play();
+      } else {
+        // Pause the audio file if it is not paused
+        audioRef.current.pause();
+      }
     } catch (error) {
       console.error(error);
     }
-  }
+  };
+  
+
 
   // Modify the pauseSong function to call the audio.pause() method
   const pauseSong = () => {
@@ -85,14 +111,45 @@ const MusicApp = () => {
     }
   }
 
+
+
+
+  
+
     // TIME CODE
 
-  const formatTime = (timeInSeconds) => {
-    // Format the time as mm:ss
-    const minutes = Math.floor(timeInSeconds / 60);
-    const seconds = Math.floor(timeInSeconds % 60);
-    return `${minutes}:${seconds}`;
-  }
+ let formatTime = (elapsedTime, totalDuration) => {
+  // Calculate the time remaining in seconds
+
+
+  // Format the time as mm:ss
+  const minutes = Math.floor(elapsedTime / 60);
+  const seconds = Math.floor(elapsedTime % 60);
+
+  return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+const [totalDuration, setTotalDuration] = useState(0);
+
+const formattedElapsedTime = formatTime(elapsedTime, 0);
+
+const timeRemaining = totalDuration - elapsedTime;
+const minutes = Math.floor(timeRemaining / 60);
+const seconds = Math.floor(timeRemaining % 60);
+const formattedTimeRemaining = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+
+
+
+
+useEffect(() => {
+  audioRef.current.onloadedmetadata = () => {
+    setTotalDuration(audioRef.current.duration);
+  };
+}, [audioRef]);
+
+
+
   
   const updateElapsedTime = () => {
     if (audioRef.current) {
@@ -109,6 +166,7 @@ const MusicApp = () => {
     }
   }, [isPlaying, audioRef]);
 
+  
 
   // You can use a similar approach to display the remaining time 
   // of the audio by subtracting the elapsed time from the duration of the audio.
@@ -136,6 +194,7 @@ const MusicApp = () => {
     };
   }, [isPlaying, audioRef]);
 
+  
 
 
 
@@ -145,12 +204,18 @@ const MusicApp = () => {
     audioRef.current.addEventListener('canplaythrough', () => {
       // The audio element is ready to play, so you can call the play() method
       audioRef.current.play();
+      console.log(audioRef)
     });
     audioRef.current.addEventListener('error', () => {
       console.error('An error occurred while trying to play the audio file');
     });
   }, [audioRef]);
-  
+
+
+  useEffect(() => {
+  audioRef.current.addEventListener('pause', () => setIsPlaying(false));
+}, [audioRef]);
+
   
 
   
@@ -170,9 +235,21 @@ const MusicApp = () => {
         <div className="song-info">
           <img className="artwork" src={currentSong.artworkUrl} alt={currentSong.name} />
           <p id="masterSongName">{currentSong.name} - {currentSong.artist}</p>
-          <p id="countInfo">{formatTime(elapsedTime)}</p>
-          <div><progress id="myProgressBar" value={elapsedTime} /></div>
-          {/* max={audioRef.current.duration} */}
+          <div id="countInfo">
+     <span className="time-code"  id="duration" style={{float: 'left'}}>{formattedElapsedTime}</span>
+     <span className="time-code"  id="timeleft" style={{float: "right"}}>{formattedTimeRemaining}</span> 
+  </div>  
+  {/* <div className="player-controls" >
+      <div className="progress-bar-container">
+        <ProgressBar elapsedTime={elapsedTime} duration={currentSong.duration} audioRef={audioRef} />
+      </div>
+    </div> */}
+
+
+          <div>
+          <input value={elapsedTime} max={totalDuration} type="range" name="range" id="myProgressBar" min="0"></input>
+
+            </div>
         
         </div>
       )}
@@ -182,12 +259,19 @@ const MusicApp = () => {
   </div>
       {/* Show the "previous", "play/pause", and "next" buttons always */}
       <div className="playback-buttons">
-      <button onClick={playPreviousSong}><i className="fas fa-backward"></i></button>
-          <button onClick={isPlaying ? pauseSong : playSong}><i className={isPlaying ? 'fas fa-pause' : 'fas fa-play'}></i></button>
-          <button onClick={playNextSong}><i className="fas fa-forward"></i></button>
+        <FontAwesomeIcon onClick={playPreviousSong} icon={faStepBackward} size="3x" className="fa-backward" />
+        <FontAwesomeIcon onClick={isPlaying ? pauseSong : playSong} icon={isPlaying ? faPauseCircle : faPlayCircle} size="3x" className={isPlaying ? 'fa-pause-circle' : 'fa-play-circle'}  />
+        <FontAwesomeIcon onClick={playNextSong} icon={faStepForward} size="3x" className="fa-step-forward" />
+        {/* className="fa-play-circle" */}
+  
+         
           </div>
           <div>
-          <audio ref={audioRef} src={currentSong.fileUrl}></audio>
+          <audio ref={audioRef} src={currentSong.fileUrl}>
+          <source src="/assets/song.mp3" type="audio/mpeg" />
+          <source src="/assets/song.ogg" type="audio/ogg" />
+          <p>Your browser does not support the audio element.</p>
+          </audio>
           </div>
             </div>
         </div>
