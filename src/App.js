@@ -16,6 +16,7 @@ import Signup from "./pages/signup/Signup";
 import Playback from "./pages/playback/Playback";
 import Profile from "./pages/profile/Profile"
 import MusicApp from "./components/musicapp/MusicApp.jsx";
+import MusicDebug from "./components/musicdebug/MusicDebug.jsx"
 
 
 
@@ -67,6 +68,10 @@ element={<div><Playback /></div>}>
 
 <Route path="/musicapp" 
 element={<div><MusicApp /></div>}>
+</Route>
+
+<Route path="/musicdebug" 
+element={<div><MusicDebug /></div>}>
 </Route>
 
     </Routes>

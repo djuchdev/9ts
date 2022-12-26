@@ -13,7 +13,7 @@ import { faStepForward } from '@fortawesome/free-solid-svg-icons';
 const MusicApp = () => {
   // Add an audioRef state variable to store a reference to the audio element
   const audioRef = useRef(null);
-  const [songs, setSongs] = useState([
+  const songs = [
     {
       id: 1,
       name: 'High Energy MidDay Mix',
@@ -47,7 +47,7 @@ const MusicApp = () => {
       fileUrl: '/assets/4.mp3',
       artworkUrl: '/assets/4.png'
     }
-  ]);
+  ];
   const [currentSong, setCurrentSong] = useState(songs[0]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
@@ -55,40 +55,134 @@ const MusicApp = () => {
 
   // Modify the playSong function to set the src attribute of the audio element
   // and call the audio.play() method
+
+  // const playSong = (song) => {
+
+  //   audioRef.current.play();
+  //   setIsPlaying(true);
+  //   setCurrentSong(song);
+
+  //         // Add a 'play' event listener to the audio element
+  //     audioRef.current.addEventListener('play', () => {
+  //       setIsPlaying(true);
+  //     });
+  
+  //     // Add a 'pause' event listener to the audio element
+  //     audioRef.current.addEventListener('pause', () => {
+  //       setIsPlaying(false);
+  //     });
+
+    
+
+  // }
+
   const playSong = (song) => {
-    try {
-      setCurrentSong(song);
-      audioRef.current.src = song.fileUrl;
-      audioRef.current.load();
-  
-      // Add a 'play' event listener to the audio element
-      audioRef.current.addEventListener('play', () => {
-        setIsPlaying(true);
-      });
-  
-      // Add a 'pause' event listener to the audio element
-      audioRef.current.addEventListener('pause', () => {
-        setIsPlaying(false);
-      });
-  
-      if (audioRef.current.paused) {
-        // Play the audio file if it is paused
-        audioRef.current.play();
-      } else {
-        // Pause the audio file if it is not paused
-        audioRef.current.pause();
-      }
-    } catch (error) {
-      console.error(error);
+    console.log(audioRef.current.paused);
+    console.log(song);
+    if (song.id) {
+      // Update the fileUrl property of the song object
+      song.fileUrl = '/assets/' + song.id + '.mp3';
     }
+    audioRef.current.src = song.fileUrl;
+    audioRef.current.play();
+    setIsPlaying(true);
+    setCurrentSong(song);
+    console.log('play button pressed')
+    console.log(audioRef.current);
+
+    // const playButtonClicked = (song) => {
+    //   if (song.fileUrl) {
+    //     playSong(song);
+    //   } else {
+    //     console.log('Error: song.fileUrl is not set or is not a valid URL');
+    //   }
+    // };
+    // if (song.fileUrl) {
+    //   playButtonClicked(song);
+    // } else {
+    //   console.log('Error: song.fileUrl is not set or is not a valid URL');
+    // }
   };
   
+ 
+    
 
+
+
+
+
+  // const playSong = (song) => {
+  //   try {
+  //     setCurrentSong(song);
+  //     audioRef.current.src = song.fileUrl;
+  //     audioRef.current.load();
+  //     audioRef.current.play();
+  //     setIsPlaying(true);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+
+  //   console.log('play button pressed')
+  // };
+  
+
+
+  
+
+
+  // const playSong = (song) => {
+
+  //   audioRef.current.play();
+  //   setIsPlaying(true);
+  // //   setCurrentSong(song);
+
+  //   try {
+  //     setCurrentSong(song);
+  //     audioRef.current.src = song.fileUrl;
+      // audioRef.current.load();
+   
+  
+      // // Add a 'play' event listener to the audio element
+      // audioRef.current.addEventListener('play', () => {
+      //   setIsPlaying(true);
+      // });
+  
+      // // Add a 'pause' event listener to the audio element
+      // audioRef.current.addEventListener('pause', () => {
+      //   setIsPlaying(false);
+      // });
+  
+      // if (audioRef.current.paused) {
+      //   // Play the audio file if it is paused
+      //   audioRef.current.play();
+      // } else {
+      //   // Pause the audio file if it is not paused
+      //   audioRef.current.pause();
+      // }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+
+  //   console.log('play button pressed')
+  // };
+
+
+  
+  // useEffect(() => {
+  //   audioRef.current.src = currentSong.fileUrl;
+  // }, [currentSong]);
+  
+
+  if (audioRef.current === null) {
+    console.log('audioRef.current is null');
+  }
+  
 
   // Modify the pauseSong function to call the audio.pause() method
   const pauseSong = () => {
     audioRef.current.pause();
     setIsPlaying(false);
+    console.log('pause button pressed')
   }
 
   // Add a function to play the previous song
@@ -204,7 +298,8 @@ useEffect(() => {
     audioRef.current.addEventListener('canplaythrough', () => {
       // The audio element is ready to play, so you can call the play() method
       audioRef.current.play();
-      console.log(audioRef)
+      setIsPlaying(true);
+  
     });
     audioRef.current.addEventListener('error', () => {
       console.error('An error occurred while trying to play the audio file');
