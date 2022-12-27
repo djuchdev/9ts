@@ -8,7 +8,7 @@ function Welcome (){
         <div>
              {/* <div className="main-container"> */}
         <div className="main-image">
-            <img className="girlHeadphones" src="../assets/girl-headphones.png" alt='girl listening'></img>
+       <img className="girlHeadphones" src="../assets/girl-headphones.png" alt='girl listening'></img>
         </div>
         </div>
         // </div>

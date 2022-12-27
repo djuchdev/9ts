@@ -22,19 +22,17 @@ function Verified (){
             <p className="verified-text-subheader"> instructions. </p>
 
             <div className="verified-bar">
-                <button className="verified-bar-ok">Ok!</button>
+                <a href="/FindFriends"><button style={{cursor: "pointer"}} className="verified-bar-ok">Ok!</button></a>
             </div>
             <div className="verified-bar">
-                <button className="verified-bar-resend">Resend to Your Email</button>
+                <a href="/MusicApp"><button style={{cursor: "pointer"}} className="verified-bar-resend">Resend to Your Email</button></a>
             </div>
             <div className="verified-logo">
                 <p className="verified-text-logo">9TS</p>
             </div>
         </div>
-
     </div>
-            
-        </div>
+</div>
     )
 }
 

@@ -22,7 +22,7 @@ function ListenBlock (){
  </div>
 </div>
 <div className="main-bar-login">
- <button className="main-text-login-bar">Tap to Start Login</button>
+<a href="/signup"><button style={{cursor: "pointer"}} className="main-text-login-bar">Tap to Start Login</button></a>
 </div>
             
         </div>
