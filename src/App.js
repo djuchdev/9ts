@@ -17,6 +17,7 @@ import Playback from "./pages/playback/Playback";
 import Profile from "./pages/profile/Profile"
 import MusicApp from "./components/musicapp/MusicApp.jsx";
 import MusicDebug from "./components/musicdebug/MusicDebug.jsx"
+import TestApp from "./components/musicapp/TestApp.jsx";
 
 
 
@@ -72,6 +73,10 @@ element={<div><MusicApp /></div>}>
 
 <Route path="/musicdebug" 
 element={<div><MusicDebug /></div>}>
+</Route>
+
+<Route path="/testapp" 
+element={<div><TestApp /></div>}>
 </Route>
 
     </Routes>
