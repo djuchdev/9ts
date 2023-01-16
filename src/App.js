@@ -18,9 +18,7 @@ import Profile from "./pages/profile/Profile"
 import MusicApp from "./components/musicapp/MusicApp.jsx";
 import MusicDebug from "./components/musicdebug/MusicDebug.jsx"
 import TestApp from "./components/musicapp/TestApp.jsx";
-
-
-
+// import myapp from "/9ts-v2/myapp"
 
 
 
@@ -31,7 +29,7 @@ function App(){
 <Routes>
 
 <Route path="/welcome" 
-element={<div><Welcome /><ListenBlock /></div>}>
+element={<><Welcome /><ListenBlock /></>}>
 </Route>
 
 <Route path="/signup" 
