@@ -1,0 +1,191 @@
+/* //MUSIC MAIN PAGE */
+
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    height: 390 vh;
+    width: 844 vh;
+}
+
+
+
+.music-main-container {
+    position: relative;
+    height: 844px;
+    width: 390px;
+   
+   }
+
+   .music-main-image {
+    position: absolute;
+   }
+
+
+.music-main-block {
+    position: absolute;
+    background-color: #171B3E;
+    height: 844px;
+    width: 390px;
+    border-radius: 5%;
+}
+
+.music-main-block-2 {
+    position: absolute;
+    background-color: #20276F;
+    margin-top: 85px;
+    height: 749px;
+    width: 390px;
+    border-radius: 5% 5% 5% 5%;
+}
+
+.music-main-text-header {
+    text-align: right;
+    font-family: montserrat;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #EFF0F2;
+    margin: 30px 40px 0 50px;
+}
+
+.music-main-text-header-2 {
+    text-align: right;
+    font-family: montserrat;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #EFF0F2;
+    margin: 0px 40px 0 50px;
+}
+
+
+.music-main-search {
+    position: absolute;
+    background-color: #EFF0F2;
+    margin: 130px 20px 0 20px;
+    height: 70px;
+    width: 350px;
+    border-radius: 30px;
+    text-align: center;
+    font-family: montserrat;
+    font-size: 1.3em;
+    padding-left: 30px;
+    
+}
+
+.artwork {
+
+ width: 350px;
+ height: 500px;
+ object-fit: cover;
+ object-position: 50% 0;
+ margin: 75px 0 15px 0px;
+ border-radius: 5%;
+}
+
+.music-player {
+
+    position: absolute;
+    margin: 0 0 0 45px;
+    padding-top: 10px;
+    border-radius: 15%;
+    /* background-color: #EFF0F2; */
+
+}
+
+
+.music-main-logo {
+font-family: montserrat;
+font-size: 6.0em;
+font-weight: bold;
+/* color: #EFF0F2; */
+text-align: center;
+margin: 70px 50px 0 60px;
+}
+
+
+.music-main-playback {
+position: absolute;
+/* margin-top:  */
+
+}
+
+#myProgressBar {
+
+margin: auto;
+width: 320px;
+}
+
+.icons {
+
+margin-top: 40px;
+}
+
+.progress-bar {
+
+    background-color: red;
+    margin: auto;
+    width: 320px;
+    height: 10px;
+}
+
+
+
+
+
+.playback-buttons {
+
+    text-align: center;
+    padding-top: 0;
+
+ 
+
+}
+
+
+#masterSongName {
+font-family: montserrat ;
+font-weight: bold;
+/* color: #EFF0F2; */
+margin: auto;
+
+}
+
+
+#countInfo {
+font-family: montserrat ;
+/* color: #EFF0F2; */
+padding: 15px;
+margin: auto;
+
+}
+
+.time-code {
+    font-size: 0.75em;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.song-info {
+
+    text-align: center;
+}
+
+progress.my-progress-bar {
+    /* Set the height of the progress bar */
+    height: 20px;
+    /* Set the background color of the progress bar */
+    background-color: #ddd;
+  }
+  
+  /* Style the progress indicator */
+  progress.my-progress-bar::-webkit-progress-bar {
+    background-color: #ddd;
+  }
+  
+  /* Style the progress value */
+  progress.my-progress-bar::-webkit-progress-value {
+    background-color: #4caf50;
+  }
+  
