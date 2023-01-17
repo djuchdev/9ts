@@ -65,20 +65,29 @@ myapp.post("/signup", function (req, res) {
 });
 
 myapp.post('/login', function (req, res) {
+    console.log('asdfasddfs')
     const email = req.body.email;
     const password = req.body.password;
 
     User.findOne({ email: email }, function (err, foundUser) {
         if (err) {
+            res.send({ status: "err" })
             console.log(err);
         } else {
             if (foundUser) {
                 bcrypt.compare(password, foundUser.password, function (err, result) {
                     if (result === true) {
-                        res.render('user-start');
+                        res.render('userstart');
+                    } else {
+                        res.send({ status: "ok" })
+                        console.log("sending to next page");
                     }
                 });
+            } else {
+                console.log("user not found");
+                res.status(401).send({ status: "err", message: "user not found" })
             }
+
         }
     });
 });

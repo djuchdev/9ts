@@ -1,39 +1,74 @@
-import React from "react"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 import "./Login.css"
 
-function Login (){
+
+function Login() {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const navigate = useNavigate()
+
+    async function handleSubmit(e) {
+        console.log('submit')
+        e.preventDefault();
+        console.log(email, password);
+        try {
+            console.log(1)
+            const res = await fetch("http://localhost:3000/login", {
+                method: "POST",
+                crossDomain: true,
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                },
+                body: JSON.stringify({
+                    email,
+                    password,
+                }),
+            })
+            console.log(2)
+            const data = await res.json()
+            console.log(data, "logged in");
+            // this.props.history.push('/verified');
+            return navigate('/userstart')
+        } catch (err) {
+            console.error(err)
+        }
+        console.log(3)
+    }
+
+
+
 
     return (
 
-       
-<div className="login-container">
-<div className="login-block-blue">
-    <p className="login-text-header">Welcome</p>
-    <div className="login-block-white">
-    {/* <form action="verified" method="POST"> */}
-            <br></br>
-            <p className="login-text-name-1">Name</p>
-            <input className="login-bar-1" type="text" placeholder="" ></input>
-            {/* required */}
-            <p className="login-text-name-2">Email</p>
-            <input type="email" className="login-bar-2" ></input>
-            {/* required */}
-            <p className="login-text-name-3">Password</p>
-            <input type="password" className="login-bar-3" ></input>
-            {/* required */}
-            <a href="/verified"><button style={{cursor: "pointer"}} type="submit" className="login-bar-main">Login</button></a>
-    {/* </form> */}
-   
-    <div className="login-line"></div>
-    <div className="login-or-box">OR</div>
-    <div className="social-links-login">
-        <a href="/verified"><img className="social fb" src="../assets/facebook.png" alt="facebook logo"></img></a>
-        <a href="/verified"><img className="social twitter" src="../assets/twitter.png" alt="twitter logo"></img></a>
-        <a href="/verified"><img className="social insta" src="../assets/instagram.png" alt="instagram logo"></img></a>
+
+        <div className="login-container">
+            <div className="login-block-blue">
+                <p className="login-text-header">Welcome</p>
+                <div className="login-block-white">
+                    <form onSubmit={handleSubmit}>
+                        <br></br>
+                        <p className="login-text-name-2">Email</p>
+                        <input onChange={e => setEmail(e.target.value)} type="email" className="login-bar-2" />
+                        {/* required */}
+                        <p className="login-text-name-3">Password</p>
+                        <input onChange={e => setPassword(e.target.value)} type="password" className="login-bar-3" />
+                        {/* required */}
+                        <button style={{ cursor: "pointer" }} type="submit" className="login-bar-main">Login</button>
+                    </form>
+
+                    <div className="login-line"></div>
+                    <div className="login-or-box">OR</div>
+                    <div className="social-links-login">
+                        <a href="/verified"><img className="social fb" src="../assets/facebook.png" alt="facebook logo"></img></a>
+                        <a href="/verified"><img className="social twitter" src="../assets/twitter.png" alt="twitter logo"></img></a>
+                        <a href="/verified"><img className="social insta" src="../assets/instagram.png" alt="instagram logo"></img></a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>     
-</div>
     )
 }
 
