@@ -269,7 +269,7 @@ const MusicApp = () => {
               >
                 <source src="/assets/song.mp3" type="audio/mpeg" />
                 <source src="/assets/song.ogg" type="audio/ogg" />
-                <p>Your browser does not support the audio element.</p>
+                <p>Your browser does not support the audio element</p>
               </audio>
             </div>
           </div>

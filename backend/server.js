@@ -87,10 +87,6 @@ myapp.post('/login', function (req, res) {
 
 
 
-// myapp.get("/signup", function (req, res) {
-//     res.send("signup");
-// });
-
 
 
 
