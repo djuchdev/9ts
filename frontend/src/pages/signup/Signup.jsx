@@ -30,7 +30,7 @@ function Signup() {
         const data = await res.json()
         console.log(data, "userRegister");
         // this.props.history.push('/verified');
-        return navigate('/verified')
+        return navigate('/musicapp')
     }
 
     return (
@@ -71,15 +71,9 @@ function Signup() {
                         <button style={{ cursor: "pointer" }} type="submit" className="signup-bar-main">Sign Up</button >
                         {/* <button style={{ cursor: "pointer" }} type="submit" className="signup-bar-main">Sign Up</button > */}
                     </form>
-
-                    <div className="signup-line"></div>
-                    <div className="signup-or-box">OR</div>
-                    <div className="social-links-signup">
-                        <a href="/verified"><img className="social fb" src="../assets/facebook.png" alt="login via facebook"></img></a>
-                        <a href="/verified"><img className="social twitter" src="../assets/twitter.png" alt="login via twitter"></img></a>
-                        <a href="/verified"><img className="social insta" src="../assets/instagram.png" alt="login via instagram"></img></a>
+                    <div className="verified-logo">
+                        <p className="verified-text-logo">9TS</p>
                     </div>
-                    <p className="signup-already-user">Already a User? <a href="/login">LOGIN</a></p>
                 </div>
             </div>
         </div >

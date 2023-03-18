@@ -13,8 +13,8 @@ const songs = [
   {
     id: 1,
     name: 'High Energy MidDay Mix',
-    artist: 'DJ Avery',
-    duration: '3:45',
+    artist: 'DJ Uch',
+    duration: '26:55',
     // Add a fileUrl property to specify the URL of the audio file
     fileUrl: '/assets/1.mp3',
     artworkUrl: '/assets/1.png'
@@ -23,7 +23,7 @@ const songs = [
     id: 2,
     name: 'Workout Volume 1',
     artist: 'DJ Passion',
-    duration: '4:20',
+    duration: '27:12',
     fileUrl: '/assets/2.mp3',
     artworkUrl: '/assets/2.png'
   },
@@ -31,7 +31,7 @@ const songs = [
     id: 3,
     name: 'Vibes All Day (Classics)',
     artist: 'DJ Bryan Ferry',
-    duration: '3:15',
+    duration: '29:35',
     fileUrl: '/assets/3.mp3',
     artworkUrl: '/assets/3.png'
   },
@@ -39,9 +39,33 @@ const songs = [
     id: 4,
     name: 'Saturday House Party',
     artist: 'MixMaster Casey',
-    duration: '3:15',
+    duration: '28:43',
     fileUrl: '/assets/4.mp3',
     artworkUrl: '/assets/4.png'
+  },
+  {
+    id: 5,
+    name: 'Reggae Fire Mix',
+    artist: 'DJ UCH',
+    duration: '58:51',
+    fileUrl: '/assets/5.mp3',
+    artworkUrl: '/assets/5.png'
+  },
+  {
+    id: 6,
+    name: 'Pump It Up Radio - Mix 1',
+    artist: 'DJ UCH',
+    duration: '28:37',
+    fileUrl: '/assets/6.mp3',
+    artworkUrl: '/assets/6.png'
+  },
+  {
+    id: 7,
+    name: 'Pump It Up Radio - Mix 2',
+    artist: 'DJ UCH',
+    duration: '29:08',
+    fileUrl: '/assets/7.mp3',
+    artworkUrl: '/assets/7.png'
   }
 ];
 function getSongById(id) {

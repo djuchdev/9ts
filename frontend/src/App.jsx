@@ -33,48 +33,48 @@ element={<><Welcome /><ListenBlock /></>}>
 </Route>
 
 <Route path="/signup" 
-element={<div><Signup /></div>}>
+element={<><Signup /></>}>
 </Route>
 
 <Route path="/login" 
-element={<div><Login /></div>}>
+element={<><Login /></>}>
 </Route>
 
 <Route path="/verified" 
-element={<div><Verified /></div>}>
+element={<><Verified /></>}>
 </Route>
 
 <Route path="/findfriends" 
-element={<div><Topbar /><FindFriends /></div>}>
+element={<><Topbar /><FindFriends /></>}>
 </Route>
 
 <Route path="/userstart" 
-element={<div><UserStart /><ListenBlock /></div>}>
+element={<><UserStart /><ListenBlock /></>}>
 </Route>
 
 <Route path="/welcomeback" 
-element={<div><WelcomeBack /><ListenBlock /></div>}>
+element={<><WelcomeBack /><ListenBlock /></>}>
 </Route>
 
 <Route path="/profile" 
-element={<div><Profile /></div>}>
+element={<><Profile /></>}>
 </Route>
 
 
 <Route path="/playback" 
-element={<div><Playback /></div>}>
+element={<><Playback /></>}>
 </Route>
 
 <Route path="/musicapp" 
-element={<div><MusicApp /></div>}>
+element={<><MusicApp /></>}>
 </Route>
 
 <Route path="/musicdebug" 
-element={<div><MusicDebug /></div>}>
+element={<><MusicDebug /></>}>
 </Route>
 
 <Route path="/testapp" 
-element={<div><TestApp /></div>}>
+element={<><TestApp /></>}>
 </Route>
 
     </Routes>
