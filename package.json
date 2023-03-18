@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/djuchdev/9ts/issues"
   },
-  "homepage": "https://github.com/djuchdev/9ts#readme"
+  "homepage": "https://github.com/djuchdev/9ts#readme",
+  "dependencies": {
+    "docker": "^1.0.0"
+  }
 }
