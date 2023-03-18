@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "runboth": "cd backend && npm run dev& && cd ../frontend && npm run dev"
+    "runboth": "cd backend && npm run dev& && cd ../frontend && npm run dev",
+    "build:digitalocean": "npm install --production=false && npm run build && npm ci"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/djuchdev/9ts.git"
+  },
+  "engines": {
+    "node": "16.x"
   },
   "author": "",
   "license": "ISC",
