@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  frontend:
+    image: frontend:latest
+    build:
+      dockerfile: ./docker/Dockerfile
+      context: ./frontend
+
+    container_name: frontend
+    volumes:
+      - ./frontend/public:/app/public
+      - ./frontend/src:/app/src
+    ports:
+      - 3001:3001
+    command: "npm run start"
