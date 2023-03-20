@@ -2,10 +2,11 @@
   "name": "9ts-v2",
   "version": "1.0.0",
   "description": "",
-  "main": "backend/server.js /frontend/src/index.js",
+  "main": "index.js server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "runboth": "cd backend && npm run dev& && cd ../frontend && npm run dev",
+    "build:digitalocean": "npm install --production=false && npm run build && npm ci"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,6 @@
   },
   "homepage": "https://github.com/djuchdev/9ts#readme",
   "dependencies": {
-    "buildpack": "^0.0.1",
     "docker": "^1.0.0"
   }
 }
