@@ -9,7 +9,7 @@ const saltRounds = 10;
 myapp.use(express.json())
 
 
-myapp.listen(3000, () => {
+myapp.listen(5000, () => {
     console.log("Server Started")
 });
 
@@ -21,7 +21,7 @@ myapp.use(bodyParser.urlencoded({
 
 mongoose.set('strictQuery', true);
 
-mongoose.connect("mongodb://localhost:27017/appNames", { useNewUrlParser: true })
+mongoose.connect("mongodb://root:password@db:27017", { useNewUrlParser: true })
     .then(() => {
         console.log("Connected to Database")
     })

@@ -4,7 +4,7 @@ services:
   frontend:
     image: frontend:latest
     build:
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ./docker/Dockerfile.dev
       context: ./frontend
 
     container_name: frontend
@@ -14,3 +14,35 @@ services:
     ports:
       - 3001:3001
     command: "npm run start"
+
+  backend:
+    image: backend:latest
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./backend
+
+    container_name: backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - 5000:5000
+    links:
+      - db
+    command: "npm run dev"
+  db:
+    image: mongo:5-focal
+    container_name: db
+    expose:
+      - 27017
+    ports:
+      - 27017:27017
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
