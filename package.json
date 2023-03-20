@@ -12,8 +12,7 @@
     "url": "git+https://github.com/djuchdev/9ts.git"
   },
   "engines": {
-    "node": "16.x",
-    "npm": "v8.19.3"
+    "node": "16.x"
   },
   "author": "",
   "license": "ISC",
