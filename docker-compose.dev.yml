@@ -1,48 +1,71 @@
 version: '3'
 
 services:
+
   frontend:
-    image: frontend:latest
+    env_file:
+      - ./.env
+    image: 9ts_frontend:latest
     build:
       dockerfile: ./docker/Dockerfile.dev
       context: ./frontend
 
-    container_name: frontend
+    container_name: 9ts_frontend
     volumes:
       - ./frontend/public:/app/public
       - ./frontend/src:/app/src
+    expose:
+      - ${FRONTEND_PORT}
     ports:
-      - 3001:3001
+      - ${FRONTEND_PORT}:${FRONTEND_PORT}
     command: "npm run start"
-
+    depends_on:
+      - backend
+    networks:
+      - backend-frontend
   backend:
-    image: backend:latest
+    env_file:
+      - ./.env
+    image: 9ts_backend:latest
     build:
       dockerfile: Dockerfile.dev
       context: ./backend
 
-    container_name: backend
+    container_name: 9ts_backend
     volumes:
       - ./backend:/app
+    expose:
+      - ${BACKEND_PORT}
     ports:
-      - 5000:5000
-    links:
+      - ${BACKEND_PORT}:${BACKEND_PORT}
+    networks:
+      - backend-mongo
+      - backend-frontend
+    depends_on:
       - db
     command: "npm run dev"
   db:
+    env_file:
+      - ./.env
     image: mongo:5-focal
-    container_name: db
+    container_name: 9ts_db
     expose:
-      - 27017
+      - ${MONGODB_PORT}
     ports:
-      - 27017:27017
+      - ${MONGODB_PORT}:${MONGODB_PORT}
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: ${MONGODB_DATABASE}
 
     volumes:
       - mongo_data:/data/db
+
+    networks:
+      - backend-mongo
+
+networks:
+  backend-frontend:
+  backend-mongo:
 
 volumes:
   mongo_data:

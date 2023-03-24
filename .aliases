@@ -1,0 +1,2 @@
+alias dc="docker-compose -f docker-compose.dev.yml"
+alias dclogs="dc logs -f"

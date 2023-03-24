@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const myapp = express();
 const mongoose = require('mongoose')
@@ -21,9 +22,14 @@ myapp.use(bodyParser.urlencoded({
 
 mongoose.set('strictQuery', true);
 
-mongoose.connect("mongodb://root:password@db:27017", { useNewUrlParser: true })
+const host = process.env['MONGODB_HOST'];
+const port = process.env['MONGODB_PORT'];
+const database = process.env['MONGODB_DATABASE'];
+
+const mongoUri = `mongodb://${host}:${port}/${database}`
+mongoose.connect(mongoUri, { useNewUrlParser: true })
     .then(() => {
-        console.log("Connected to Database")
+        console.log(`Connected to MongoDB as ${username}@${host}:${port}`)
     })
     .catch((e) => console.log(e))
 
