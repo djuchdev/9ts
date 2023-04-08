@@ -1,71 +1,16 @@
-version: '3'
-
 services:
-
-  frontend:
-    env_file:
-      - ./.env
-    image: 9ts_frontend:latest
-    build:
-      dockerfile: ./docker/Dockerfile.dev
-      context: ./frontend
-
-    container_name: 9ts_frontend
-    volumes:
-      - ./frontend/public:/app/public
-      - ./frontend/src:/app/src
-    expose:
-      - ${FRONTEND_PORT}
-    ports:
-      - ${FRONTEND_PORT}:${FRONTEND_PORT}
-    command: "npm run start"
-    depends_on:
-      - backend
-    networks:
-      - backend-frontend
   backend:
-    env_file:
-      - ./.env
-    image: 9ts_backend:latest
     build:
       dockerfile: Dockerfile.dev
       context: ./backend
 
-    container_name: 9ts_backend
     volumes:
-      - ./backend:/app
-    expose:
-      - ${BACKEND_PORT}
-    ports:
-      - ${BACKEND_PORT}:${BACKEND_PORT}
-    networks:
-      - backend-mongo
-      - backend-frontend
-    depends_on:
-      - db
-    command: "npm run dev"
-  db:
-    env_file:
-      - ./.env
-    image: mongo:5-focal
-    container_name: 9ts_db
-    expose:
-      - ${MONGODB_PORT}
-    ports:
-      - ${MONGODB_PORT}:${MONGODB_PORT}
-    restart: always
+      - ./backend:/usr/src/app
+
     environment:
-      MONGO_INITDB_DATABASE: ${MONGODB_DATABASE}
+      - NODE_ENV=development
+      - MONGODB_HOST=${MONGODB_HOST}
+      - MONGODB_PORT=${MONGODB_PORT}
+      - MONGODB_DATABASE=${MONGODB_DATABASE}
 
-    volumes:
-      - mongo_data:/data/db
-
-    networks:
-      - backend-mongo
-
-networks:
-  backend-frontend:
-  backend-mongo:
-
-volumes:
-  mongo_data:
+    command: ["npm", "run", "dev"]

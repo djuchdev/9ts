@@ -9,7 +9,6 @@ myapp.use(cors());
 const saltRounds = 10;
 myapp.use(express.json())
 
-
 myapp.listen(5000, () => {
     console.log("Server Started")
 });
@@ -22,14 +21,14 @@ myapp.use(bodyParser.urlencoded({
 
 mongoose.set('strictQuery', true);
 
-const host = process.env['MONGODB_HOST'];
-const port = process.env['MONGODB_PORT'];
-const database = process.env['MONGODB_DATABASE'];
+const host = process.env.MONGODB_HOST
+const port = process.env.MONGODB_PORT
+const database = process.env.MONGODB_DATABASE
 
 const mongoUri = `mongodb://${host}:${port}/${database}`
 mongoose.connect(mongoUri, { useNewUrlParser: true })
     .then(() => {
-        console.log(`Connected to MongoDB as ${username}@${host}:${port}`)
+        console.log(`Connected to MongoDB ${host}:${port}`)
     })
     .catch((e) => console.log(e))
 
