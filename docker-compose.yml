@@ -2,36 +2,29 @@ version: '3'
 
 services:
 
-  # frontend:
-  #   env_file:
-  #     - ./.env
-  #   image: 9ts_frontend:latest
-  #   build:
-  #     dockerfile: ./docker/Dockerfile
-  #     context: ./frontend
+  frontend:
+    env_file:
+      - ./.env
+    image: 9ts_frontend_prod:latest
+    build:
+      dockerfile: ./docker/Dockerfile
+      context: ./frontend
 
-  #   container_name: 9ts_frontend
-  #   volumes:
-  #     - ./frontend/public:/app/public
-  #     - ./frontend/src:/app/src
-  #   expose:
-  #     - ${FRONTEND_PORT}
-  #   ports:
-  #     - ${FRONTEND_PORT}:${FRONTEND_PORT}
-  #   command: "npm run start"
-  #   depends_on:
-  #     - backend
-  #   networks:
-  #     - backend-frontend
+    container_name: 9ts_frontend_prod
+    ports:
+      - ${FRONTEND_PORT}:80
+    networks:
+      - backend-frontend
+
   backend:
     env_file:
       - ./.env
-    image: 9ts_backend:latest
+    image: 9ts_backend_prod:latest
     build:
       dockerfile: Dockerfile
       context: ./backend
 
-    container_name: 9ts_backend
+    container_name: 9ts_backend_prod
     expose:
       - ${BACKEND_PORT}
     ports:
@@ -51,7 +44,7 @@ services:
     env_file:
       - ./.env
     image: mongo:5-focal
-    container_name: 9ts_db
+    container_name: 9ts_db_prod
     expose:
       - ${MONGODB_PORT}
     ports:

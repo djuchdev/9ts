@@ -5,16 +5,8 @@ RUN npm ci
 
 FROM node:18.15.0-bullseye
 
-ARG NODE_ENV
-ARG MONGODB_HOST
-ARG MONGODB_PORT
-ARG MONGODB_DATABASE
-
-ENV NODE_ENV ${NODE_ENV}
-ENV MONGODB_HOST ${MONGODB_HOST}
-ENV MONGODB_PORT ${MONGODB_PORT}
-ENV MONGODB_DATABASE ${MONGODB_DATABASE}
-
 WORKDIR /usr/src/app
+ARG NODE_ENV
+ENV NODE_ENV ${NODE_ENV}
 COPY --chown=node:node --from=build /usr/src/app/node_modules /usr/src/app/node_modules
 USER node
