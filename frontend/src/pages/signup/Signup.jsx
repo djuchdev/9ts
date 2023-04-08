@@ -13,20 +13,20 @@ function Signup() {
     async function handleSubmit(e) {
         e.preventDefault();
         console.log(name, email, password);
-        const res = await fetch("http://localhost:3000/signup", {
-            method: "POST",
-            crossDomain: true,
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                "Access-Control-Allow-Origin": "*"
-            },
-            body: JSON.stringify({
-                name,
-                email,
-                password,
-            }),
-        })
+        const res = await fetch("http://localhost:5000/signup", {
+          method: "POST",
+          crossDomain: true,
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+          }),
+        });
         const data = await res.json()
         console.log(data, "userRegister");
         // this.props.history.push('/verified');

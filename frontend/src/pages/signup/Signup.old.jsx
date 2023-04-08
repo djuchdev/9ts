@@ -27,27 +27,25 @@ export default class Signup extends Component {
         e.preventDefault();
         const { name, email, password } = this.state;
         console.log(name, email, password);
-        fetch("http://localhost:3000/signup", {
-            method: "POST",
-            crossDomain: true,
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                "Access-Control-Allow-Origin": "*"
-            },
-            body: JSON.stringify({
-                name,
-                email,
-                password,
-            }),
+        fetch("http://backend:5000/signup", {
+          method: "POST",
+          crossDomain: true,
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+          }),
         })
-            .then((res) => res.json())
-            .then((data) => {
-
-                console.log(data, "userRegister");
-                this.props.history.push('/verified');
-
-            });
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data, "userRegister");
+            this.props.history.push("/verified");
+          });
 
 
 

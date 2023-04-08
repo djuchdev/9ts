@@ -12,19 +12,19 @@ function Login() {
         e.preventDefault();
         console.log(email, password);
         try {
-            const res = await fetch("http://localhost:3000/login", {
-                method: "POST",
-                crossDomain: true,
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                    "Access-Control-Allow-Origin": "*"
-                },
-                body: JSON.stringify({
-                    email,
-                    password,
-                }),
-            })
+            const res = await fetch("http://backend:5000/login", {
+              method: "POST",
+              crossDomain: true,
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                "Access-Control-Allow-Origin": "*",
+              },
+              body: JSON.stringify({
+                email,
+                password,
+              }),
+            });
             const data = await res.json()
             console.log(data, "logged in");
             return navigate('/userstart')
